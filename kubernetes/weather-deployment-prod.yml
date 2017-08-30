@@ -1,23 +1,22 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: weather-api 
+  name: weather-api
 spec:
   replicas: 2
   template:
     metadata:
       labels:
-         app: weather 
+         app: weather
          tier: backend
          track: stable
     spec:
        containers:
-       - name: weather 
-         image: us.gcr.io/arcusassign/weather:latest 
+       - name: weather
+         image: us.gcr.io/arcusassign/weather:latest
          ports:
           - containerPort: 5000
        - name: redis
          image: redis
-         ports: 
+         ports:
           - containerPort: 6379
-       
