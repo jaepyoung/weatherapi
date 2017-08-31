@@ -1,0 +1,74 @@
+swagger: "2.0"
+
+info:
+  title: "Arcus assignment API"
+  version: "1.0"
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+
+basePath: /v1.0
+
+paths:
+  /zipcode/{zip_code}:
+    get:
+      operationId: app.get_weather
+      summary: Get two weeks data
+      parameters:
+        - $ref: '#/parameters/zip_code'
+      responses:
+        200:
+          description: 'Fetch a list of weathers'
+          schema:
+            type: array
+            $ref: '#/definitions/weather'
+        404:
+          description: Weather does not exist
+
+parameters:
+  zip_code:
+    name: zip_code
+    description: US Postal code
+    in: path
+    type: string
+    required: true
+    pattern: "^[0-9]{5}(?:-[0-9]{4})?$"
+
+
+definitions:
+  weather:
+    type: object
+    required:
+      - country_code
+      - state_code
+      - city_name
+      - date
+      - max_temp
+      - temp
+      - min_temp
+    properties:
+      country_code:
+        type: string
+        description: Country code
+      state_code:
+        type: string
+        description: State code
+      date:
+        type: string
+        format: date
+        description: Weather date
+      city_name:
+        type: string
+        description: City name
+      max_temp:
+        type: string
+        description: Max temp
+      temp:
+        type: string
+        description: Temp
+      min_temp:
+        type: string
+        description: Min Temp
