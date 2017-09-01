@@ -29,7 +29,7 @@ def hello(postal_code):
     full_url=base_url+postal_code+"&country=US&start_date=2017-08-02&end_date=2017-08-03&key=c011cdc396c741a28526652b501ad9a5"
     today = datetime.date.today()
     response=""
-    for x in range(0,14):
+    for x in range(0,1):
         first_delta = datetime.timedelta(days = x+1)
         second_delta = datetime.timedelta(days = x)
         start_date = today - first_delta
