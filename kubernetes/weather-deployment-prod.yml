@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: weather-api
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -20,3 +20,10 @@ spec:
          image: redis
          ports:
           - containerPort: 6379
+         volumeMounts:
+           - name: redis-persistent-storage
+             mountPath: /data
+       volumes:
+        - name: redis-persistent-storage
+          persistentVolumeClaim:
+            claimName: task-pv-claim 
