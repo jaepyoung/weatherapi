@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: weather-old
+spec:
+  selector:
+    app: weather-old  
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 80 
+      targetPort: 5000
+  type: LoadBalancer
+

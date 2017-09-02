@@ -27,7 +27,7 @@ def get_weather(zip_code):
     WEATHERS=[]
     if re.search(r'^[0-9]{5}(?:-[0-9]{4})?$', zip_code):
         today = datetime.date.today()
-        for x in range(0,5):
+        for x in range(0,1):
             weather={}
             first_delta = datetime.timedelta(days = x+1)
             second_delta = datetime.timedelta(days = x)
